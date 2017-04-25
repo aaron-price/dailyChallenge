@@ -6,8 +6,9 @@ const mongo = "Mongo DB";
 const node = "Node";
 const ui = "UI / UX / Design";
 const tdd = "TDD / BDD";
-const vim = "Vim"
-
+const vim = "Vim";
+const game = "Game";
+const animation = "Animation";
 
 let contents = [
     {
@@ -19,5 +20,10 @@ let contents = [
       title: "Create Dom elements",
       date: "April 24, 2017",
       tags: [vanilla, tdd, vim] 
+    },
+    {
+      title: "Jezzball",
+      date: "April 25, 2017",
+      tags: [vim, tdd, vanilla, game, animation] 
     },
 ]

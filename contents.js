@@ -22,8 +22,13 @@ let contents = [
       tags: [vanilla, tdd, vim] 
     },
     {
-      title: "Jezzball",
-      date: "April 25, 2017",
-      tags: [vim, tdd, vanilla, game, animation] 
+        title: "Jezzball",
+        date: "April 25, 2017",
+        tags: [vim, tdd, vanilla, game, animation]
+    },
+    {
+        title: "Minesweeper",
+        date: "April 26, 2017",
+        tags: [tdd, react, game]
     },
 ]

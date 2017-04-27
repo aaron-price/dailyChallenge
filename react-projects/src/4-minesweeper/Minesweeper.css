@@ -1,9 +1,0 @@
-.cell {
-    fill: blue;
-}
-rect.cell.cell--revealed {
-    fill: blue;
-}
-rect.cell.cell--hidden {
-    fill: blue;
-}

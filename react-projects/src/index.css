@@ -3,3 +3,13 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.minesweeper__gameOver {
+    color: red;
+}
+.minesweeper__victory {
+    color: green;
+}
+.minesweeper__cell--hidden {
+    cursor: pointer;
+}

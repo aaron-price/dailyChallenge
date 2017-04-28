@@ -9,6 +9,7 @@ import {
 
 //Routes
 import MineSweeper from './4-minesweeper/Minesweeper';
+import Zipper from './5-zipper/Zipper';
 
 const Home = () => (
     <div>
@@ -64,6 +65,7 @@ const BasicExample = () => (
                 <li><Link to="/about">About</Link></li>
                 <li><Link to="/mineSweeper">MineSweeper</Link></li>
                 <li><Link to="/topics">Topics</Link></li>
+                <li><Link to="/zipper">Zipper</Link></li>
             </ul>
 
             <hr/>
@@ -72,6 +74,7 @@ const BasicExample = () => (
             <Route path="/about" component={About}/>
             <Route path="/mineSweeper" component={MineSweeper}/>
             <Route path="/topics" component={Topics}/>
+            <Route path="/zipper" component={Zipper}/>
         </div>
     </Router>
 )

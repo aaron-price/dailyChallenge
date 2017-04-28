@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import TweenMax from 'gsap';
+import {TweenMax, Power4, Bounce, Elastic }from 'gsap';
+
+function between(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 class Zipper extends Component {
     constructor(){
@@ -15,61 +19,62 @@ class Zipper extends Component {
     renderLines() {
     let lines = [];
     for (let i = 0; i < 25; i++) {
+
+        const width = between(0.1, 8);
+        const colour1 = between(0, 255);
+        const colour2 = between(0, 255);
+        const colour3 = between(0, 255);
+
         // Upper line
         lines.push(<line
             className="lineUpper"
             key={`${i}-upper`} ref={`${i}-upper`}
-            x1={i * 10} x2={i * 10} y1={20} y2={150}
-            strokeWidth="2" stroke="black"/>)
+            x1={i * 10} x2={i * 10} y1={20} y2={156}
+            strokeWidth={width} stroke={`rgba(${colour1},${colour2},${colour3}, 1)`}/>)
 
         // Lower Line
         lines.push(<line
             className="lineLower"
             key={`${i}-lower`} ref={`${i}-lower`}
-            x1={i * 10} x2={i * 10} y1={320} y2={160}
-            strokeWidth="2" stroke="black"/>)
+            x1={i * 10} x2={i * 10} y1={320} y2={155}
+            strokeWidth={width} stroke={`rgba(${colour1},${colour2},${colour3}, 1)`}/>)
     }
     return lines;
     }
 
     animate() {
-        let pieces = {
-            upper: [],
-            lower: [],
-        }
-        pieces.ball = this.refs.ball;
-        for (let i = 0; i < 25; i++) {
-            pieces.upper.push(this.refs[`${i}-upper`])
-            pieces.lower.push(this.refs[`${i}-lower`])
-        }
-
+        let ball = this.refs.ball;
         let tl = TweenMax;
-        console.log(pieces.ball)
-        tl.to(pieces.ball, 3, {x: -450})
-        tl.staggerTo(".lineUpper", 1, {rotation: "60cw"}, -0.06)
-        tl.staggerTo(".lineLower", 1, {rotation: "-60cw", transformOrigin: "bottom"}, -0.06)
-        tl.staggerFrom(".lineUpper", 1, {rotation: "-60cw", delay: 2}, -0.06)
-        tl.staggerFrom(".lineLower", 1, {rotation: "60cw", delay: 2, transformOrigin: "bottom"}, -0.06)
+
+        tl.to(ball, 2, {x: -280, delay: 0.5, yoyo:true, repeat:1, ease: Power4.easeIn })
+
+        tl.staggerTo(".lineUpper", 1,
+            {rotation: "60cw", yoyo:true, repeat:1, delay: 2.5, ease: Power4.easeOut}, -0.016)
+
+        tl.staggerTo(".lineLower", 1,
+            {rotation: "-60cw", yoyo:true, repeat:1, delay: 2.5, ease: Power4.easeOut, transformOrigin: "bottom"}, -0.016)
     }
 
     render() {
         return (
             <svg className="container" x="0" y="0"
-                 width="500"
+                 width="700"
                  height="500"
                  viewBox="-200 0 700 700"
                  xmlns="http://www.w3.org/2000/svg">
                 {this.renderLines()}
-                <circle ref="ball" cx="350" cy="150" r="30"/>
+                <defs>
+                    <linearGradient id="Grad" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0%" stopColor="#DDD"/>
+                        <stop offset="50%" stopColor="black" stopOpacity="1"/>
+                        <stop offset="100%" stopColor="#DDD"/>
+                    </linearGradient>
+                </defs>
+                <circle className="zipper__ball" ref="ball" cx="550" cy="150" r="30" fill="url(#Grad)"/>
             </svg>
         )
     }
 }
 
-const ZipperLine = props => {
-    return (
-        <line x1={props.x1} x2={props.x2} y1={props.y1} y2={props.y2} strokeWidth="2" stroke="black"/>
-    )
-}
 
 export default Zipper

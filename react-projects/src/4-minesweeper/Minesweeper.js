@@ -122,9 +122,6 @@ class Minesweeper extends Component {
 }
 
 function countNeighbours(id, border) {
-    // @TODO
-    // @BUG: cells against the floor or ceiling sometimes register the opposite wall's mine.
-    // This is because up or down 1, will wrap to the top or bottom of the next column.
 
     const upDir = - 1
     const downDir = 1

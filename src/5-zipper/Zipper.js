@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import {TweenMax, Power4, Bounce, Elastic }from 'gsap';
+import {TweenMax, Power4 }from 'gsap';
 
 function between(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;

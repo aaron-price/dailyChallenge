@@ -1,15 +1,19 @@
 // Components
-import MineSweeper from '../4-minesweeper/Minesweeper';
-import Zipper from '../5-zipper/Zipper';
+import MineSweeper from './4-minesweeper/Minesweeper'
+import Zipper from './5-zipper/Zipper'
+import Hovers from './6-hovers/Hovers'
 
 // Tags
-const vanilla = "Only Vanilla Javascript";
-const react = "React";
-const ui = "UI / UX / Design";
-const tdd = "TDD / BDD";
-const vim = "Vim";
-const game = "Game";
-const animation = "Animation";
+const vanilla = "Only Vanilla Javascript"
+const react = "React"
+const ui = "UI / UX / Design"
+const tdd = "TDD / BDD"
+const vim = "Vim"
+const game = "Game"
+const animation = "Animation"
+const sass = "SASS / SCSS"
+const buttons = "Buttons"
+const hover = "Hover Effect"
 
 const contents = [
     {
@@ -39,5 +43,11 @@ const contents = [
         component: Zipper,
         tags: [react, animation]
     },
+    {
+        title: "Hovers",
+        day: 6,
+        component: Hovers,
+        tags: [react, animation, ui, sass, buttons, hover]
+    },
 ]
-export default contents;
+export default contents

@@ -9,7 +9,7 @@ import {
 
 //Routes
 import Home from "./Home"
-import contents from "./contents"
+import contents from "../contents"
 
 function linkFactory(){
     return contents.map((content) => {

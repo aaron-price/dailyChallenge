@@ -2,6 +2,7 @@
 import MineSweeper from './4-minesweeper/Minesweeper'
 import Zipper from './5-zipper/Zipper'
 import Hovers from './6-hovers/Hovers'
+import Menus from './7-menus/Menus'
 
 // Tags
 const vanilla = "Only Vanilla Javascript"
@@ -14,6 +15,7 @@ const animation = "Animation"
 const sass = "SASS / SCSS"
 const buttons = "Buttons"
 const hover = "Hover Effect"
+const redux = "Redux"
 
 const contents = [
     {
@@ -48,6 +50,12 @@ const contents = [
         day: 6,
         component: Hovers,
         tags: [react, animation, ui, sass, buttons, hover]
+    },
+    {
+        title: "Menu colour settings",
+        day: 7,
+        component: Menus,
+        tags: [react, redux]
     },
 ]
 export default contents

@@ -3,6 +3,7 @@ import MineSweeper from './4-minesweeper/Minesweeper'
 import Zipper from './5-zipper/Zipper'
 import Hovers from './6-hovers/Hovers'
 import Menus from './7-menus/Menus'
+import Gears from './8-gears/Gears'
 
 // Tags
 const vanilla = "Only Vanilla Javascript"
@@ -13,6 +14,7 @@ const vim = "Vim"
 const game = "Game"
 const animation = "Animation"
 const sass = "SASS / SCSS"
+const svg = "SVG"
 const buttons = "Buttons"
 const hover = "Hover Effect"
 const redux = "Redux"
@@ -31,19 +33,19 @@ const contents = [
     {
         title: "Jezzball",
         day: 3,
-        tags: [vim, tdd, vanilla, game, animation]
+        tags: [vim, tdd, vanilla, game, animation, svg]
     },
     {
         title: "Minesweeper",
         day: 4,
         component: MineSweeper,
-        tags: [tdd, react, game]
+        tags: [tdd, react, game, svg]
     },
     {
         title: "Zipper",
         day: 5,
         component: Zipper,
-        tags: [react, animation]
+        tags: [react, animation, svg]
     },
     {
         title: "Hovers",
@@ -56,6 +58,12 @@ const contents = [
         day: 7,
         component: Menus,
         tags: [react, redux]
+    },
+    {
+        title: "Gears",
+        day: 8,
+        component: Gears,
+        tags: [react, animation, svg]
     },
 ]
 export default contents

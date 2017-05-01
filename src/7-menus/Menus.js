@@ -2,6 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import { updateHeader } from "../redux/actions/actionCreators"
 import PropTypes from "prop-types"
+import { fromJS } from "immutable"
 
 const Menus = props => {
     return (
@@ -10,7 +11,7 @@ const Menus = props => {
                 Menu Background Colour: &nbsp;
                 <select
                     value={props.headerColor}
-                    onChange={(e) => props.dispatchUpdateHeader({headerColor: e.target.value})}>
+                    onChange={(e) => props.dispatchUpdateHeader(fromJS({headerColor: e.target.value}))}>
                     <option value="red">Red</option>
                     <option value="green">Green</option>
                     <option value="blue">Blue</option>
@@ -25,7 +26,7 @@ Menus.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        headerColor: state.headerColor,
+        headerColor: state.get("headerColor"),
     }
 }
 

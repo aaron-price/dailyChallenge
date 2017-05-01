@@ -9,21 +9,21 @@ import FilterSettings from "./9-filterSettings/FilterSettings"
 
 // Tags
 export const tags = fromJS({
-    animation   : "Animation",
-    buttons     : "Buttons",
-    game        : "Game",
-    hover       : "Hover Effect",
-    react       : "React",
-    redux       : "Redux",
-    sass        : "SASS / SCSS",
-    svg         : "SVG",
-    tdd         : "TDD / BDD",
-    ui          : "UI / UX / Design",
-    vim         : "Vim",
-    vanilla     : "Only Vanilla Javascript",
+    animation   : { filter: "allowed", title:"animation", text: "Animation" },
+    buttons     : { filter: "allowed", title:"buttons", text: "Buttons" },
+    game        : { filter: "allowed", title:"game", text: "Game" },
+    hover       : { filter: "allowed", title:"hover", text: "Hover Effect" },
+    react       : { filter: "allowed", title:"react", text: "React" },
+    redux       : { filter: "allowed", title:"redux", text: "Redux" },
+    sass        : { filter: "allowed", title:"sass", text: "SASS / SCSS" },
+    svg         : { filter: "allowed", title:"svg", text: "SVG" },
+    tdd         : { filter: "allowed", title:"tdd", text: "TDD / BDD" },
+    ui          : { filter: "allowed", title:"ui", text: "UI / UX / Design" },
+    vim         : { filter: "allowed", title:"vim", text: "Vim" },
+    vanilla     : { filter: "allowed", title:"vanilla", text: "Only Vanilla Javascript" },
 })
 
-const contents = fromJS([
+let contents = fromJS([
     {
         title: "Accordion",
         day: 1,
@@ -76,4 +76,5 @@ const contents = fromJS([
         tags: [tags.get("react"), tags.get("redux")],
     },
 ])
+
 export default contents

@@ -1,9 +1,10 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { updateHeader } from '../redux/actions/actionCreators'
+import React from "react"
+import { connect } from "react-redux"
+import { updateHeader } from "../redux/actions/actionCreators"
+import PropTypes from "prop-types"
 
 const Menus = props => {
-        return (
+    return (
             <div className="webpackOptions">
                 <h1>Options</h1>
                 Menu Background Colour: &nbsp;
@@ -15,12 +16,16 @@ const Menus = props => {
                     <option value="blue">Blue</option>
                 </select>
             </div>
-        )
+    )
+}
+Menus.propTypes = {
+    headerColor: PropTypes.string.isRequired,
+    dispatchUpdateHeader: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => {
     return {
-        headerColor: state.headerColor
+        headerColor: state.headerColor,
     }
 }
 
@@ -28,7 +33,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         dispatchUpdateHeader(config) {
             dispatch(updateHeader(config))
-        }
+        },
     }
 }
 

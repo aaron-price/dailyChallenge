@@ -1,13 +1,13 @@
-import React from 'react'
-import './App.scss'
-import { Route } from 'react-router-dom'
+import React from "react"
+import "./App.scss"
+import { Route } from "react-router-dom"
 import contents from "../contents"
 import Home from "./Home"
 
-function routeFactory(){
+function routeFactory() {
     return contents.map((content, key) => {
-        return content.hasOwnProperty("component")
-            && <Route key={key} path={`/${content.title}`} component={content.component}/>
+        return content.get("component") !== undefined
+            && <Route key={key} path={`/${content.get("title")}`} component={content.get("component")}/>
     })
 }
 const Body = props => {

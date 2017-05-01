@@ -1,17 +1,18 @@
-import React from 'react'
-import './App.scss'
-import { Link } from 'react-router-dom'
+import React from "react"
+import "./App.scss"
+import { Link } from "react-router-dom"
 import contents from "../contents"
-import { connect } from 'react-redux'
+import { connect } from "react-redux"
+import PropTypes from "prop-types"
 
-function linkFactory(){
+function linkFactory() {
     return contents.map((content, key) => {
-        return content.hasOwnProperty("component")
-            ? <li key={key}><Link to={`/${content.title.toLowerCase()}`}
-        >day {content.day} {content.title}</Link></li>
+        return content.get("component") !== undefined
+            ? <li key={key}><Link to={`/${content.get("title").toLowerCase()}`}
+        >day {content.get("day")} {content.get("title")}</Link></li>
 
-            : <li key={key}><a href={`/../${content.day}-${content.title.toLowerCase()}/index.html`}
-        >day {content.day} {content.title}</a></li>
+            : <li key={key}><a href={`/../${content.get("day")}-${content.get("title").toLowerCase()}/index.html`}
+        >day {content.get("day")} {content.get("title")}</a></li>
     })
 }
 
@@ -25,11 +26,14 @@ const Menu = props => {
         </div>
     )
 }
+Menu.propTypes = {
+    headerColor: PropTypes.string.isRequired,
+}
 
 
 const mapStateToProps = (state) => {
     return {
-        headerColor: state.headerColor
+        headerColor: state.headerColor,
     }
 }
 

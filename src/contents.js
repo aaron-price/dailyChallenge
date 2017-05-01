@@ -1,69 +1,79 @@
+import { fromJS } from "immutable"
 // Components
-import MineSweeper from './4-minesweeper/Minesweeper'
-import Zipper from './5-zipper/Zipper'
-import Hovers from './6-hovers/Hovers'
-import Menus from './7-menus/Menus'
-import Gears from './8-gears/Gears'
+import MineSweeper from "./4-minesweeper/Minesweeper"
+import Zipper from "./5-zipper/Zipper"
+import Hovers from "./6-hovers/Hovers"
+import Menus from "./7-menus/Menus"
+import Gears from "./8-gears/Gears"
+import FilterSettings from "./9-filterSettings/FilterSettings"
 
 // Tags
-const vanilla = "Only Vanilla Javascript"
-const react = "React"
-const ui = "UI / UX / Design"
-const tdd = "TDD / BDD"
-const vim = "Vim"
-const game = "Game"
-const animation = "Animation"
-const sass = "SASS / SCSS"
-const svg = "SVG"
-const buttons = "Buttons"
-const hover = "Hover Effect"
-const redux = "Redux"
+export const tags = fromJS({
+    animation   : "Animation",
+    buttons     : "Buttons",
+    game        : "Game",
+    hover       : "Hover Effect",
+    react       : "React",
+    redux       : "Redux",
+    sass        : "SASS / SCSS",
+    svg         : "SVG",
+    tdd         : "TDD / BDD",
+    ui          : "UI / UX / Design",
+    vim         : "Vim",
+    vanilla     : "Only Vanilla Javascript",
+})
 
-const contents = [
+const contents = fromJS([
     {
         title: "Accordion",
         day: 1,
-        tags: [vanilla, ui, tdd, vim]
+        tags: [tags.get("tdd"),tags.get("ui"),tags.get("vanilla"),tags.get("vim")],
     },
     {
         title: "CreateElements",
         day: 2,
-        tags: [vanilla, tdd, vim]
+        tags: [tags.get("tdd"),tags.get("vanilla"),tags.get("vim")],
     },
     {
         title: "Jezzball",
         day: 3,
-        tags: [vim, tdd, vanilla, game, animation, svg]
+        tags: [tags.get("animation"),tags.get("game"),tags.get("svg"),tags.get("tdd"),tags.get("vanilla"),tags.get("vim")],
     },
     {
         title: "Minesweeper",
         day: 4,
         component: MineSweeper,
-        tags: [tdd, react, game, svg]
+        tags: [tags.get("game"),tags.get("react"),tags.get("svg"),tags.get("tdd")],
     },
     {
         title: "Zipper",
         day: 5,
         component: Zipper,
-        tags: [react, animation, svg]
+        tags: [tags.get("animation"),tags.get("react"),tags.get("svg")],
     },
     {
         title: "Hovers",
         day: 6,
         component: Hovers,
-        tags: [react, animation, ui, sass, buttons, hover]
+        tags: [tags.get("animation"),tags.get("buttons"),tags.get("hover"),tags.get("react"),tags.get("sass"),tags.get("ui")],
     },
     {
         title: "Menu colour settings",
         day: 7,
         component: Menus,
-        tags: [react, redux]
+        tags: [tags.get("react"), tags.get("redux")],
     },
     {
         title: "Gears",
         day: 8,
         component: Gears,
-        tags: [react, animation, svg]
+        tags: [tags.get("animation"), tags.get("react"), tags.get("svg")],
     },
-]
+    {
+        title: "Filter Settings",
+        day: 9,
+        component: FilterSettings,
+        tags: [tags.get("react"), tags.get("redux")],
+    },
+])
 export default contents

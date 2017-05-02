@@ -1,47 +1,47 @@
-import reducer from './reducers'
-import * as types from '../actions/actions'
+import reducer from "./reducers"
+import * as types from "../actions/actions"
 
-describe('todos reducer', () => {
-    it('should return the initial state', () => {
+describe("todos reducer", () => {
+    it("should return the initial state", () => {
         expect(
             reducer(undefined, {})
         ).toEqual(
             {
-                headerColor: "green"
+                headerColor: "green",
             }
         )
     })
-    it('should update header colour', () => {
+    it("should update header colour", () => {
         expect(
             reducer({}, {
                 type: types.UPDATE_HEADER,
-                config: {headerColor: "blue"}
+                config: {headerColor: "blue"},
             })
         ).toEqual(
             {
-                headerColor: "blue"
+                headerColor: "blue",
             }
         )
 
         expect(
             reducer({}, {
                 type: types.UPDATE_HEADER,
-                config: {headerColor: "red"}
+                config: {headerColor: "red"},
             })
         ).toEqual(
             {
-                headerColor: "red"
+                headerColor: "red",
             }
         )
 
         expect(
             reducer({}, {
                 type: types.UPDATE_HEADER,
-                config: {headerColor: "green"}
+                config: {headerColor: "green"},
             })
         ).toEqual(
             {
-                headerColor: "green"
+                headerColor: "green",
             }
         )
     })

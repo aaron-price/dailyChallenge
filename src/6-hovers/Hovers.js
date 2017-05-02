@@ -1,7 +1,7 @@
 /**
  * Created by aaronp on 2017-04-28.
  */
-import React from 'react'
+import React from "react"
 
 const Hovers = props => {
     return (

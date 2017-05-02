@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react"
+import PropTypes from "prop-types"
 
-const cellSize = 20;
-const gridWidth = 16;
-const gridHeight = 16;
-const mineFrequency = 0.01;
-let mineCount = 0;
+const cellSize = 20
+const gridWidth = 16
+const gridHeight = 16
+const mineFrequency = 0.01
+let mineCount = 0
 // Creates an array of random numbers. After page load, the numbers are immutable, but still random.
-let boolRandArr = [];
+let boolRandArr = []
 function between(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min
 }
-for(let i = 0; i < (gridWidth * gridHeight); i++) {
+for (let i = 0; i < (gridWidth * gridHeight); i++) {
     let randNum = between(0,9)
     boolRandArr.push(randNum)
-    if( randNum <= mineFrequency ) { mineCount += 1}
+    if (randNum <= mineFrequency) { mineCount += 1}
 }
 
 class Minesweeper extends Component {
     constructor() {
-        super();
-        this.state = { grid: [], victory: false };
-        this.buildGrid = this.buildGrid.bind(this);
-        this.revealer = this.revealer.bind(this);
+        super()
+        this.state = { grid: [], victory: false }
+        this.buildGrid = this.buildGrid.bind(this)
+        this.revealer = this.revealer.bind(this)
     }
 
     componentDidMount() {
@@ -31,42 +31,42 @@ class Minesweeper extends Component {
 
     revealer(id, mine) {
         // Don't allow clicking on already revealed mines
-        if(this.state.grid[id].value === "hidden") {
+        if (this.state.grid[id].value === "hidden") {
 
             // If player clicked a mine
             if (mine && !this.state.gameOver) {
-                const newState = Object.assign({}, this.state);
+                const newState = Object.assign({}, this.state)
                 const newGrid = Object.assign(
                     {},
                     newState,
                     {...newState.grid[id].value = "revealed", gameOver: true}
-                );
+                )
                 this.setState(newGrid)
             } else if (!this.state.gameOver) {
 
                 // Determine whether this click wins the game
-                const safeCells = (gridWidth * gridHeight) - mineCount;
+                const safeCells = (gridWidth * gridHeight) - mineCount
                 let victoryObj = {
-                    gameOver: false
+                    gameOver: false,
                 }
                 if ((this.state.points + 1) >= safeCells) {
                     victoryObj = {
                         victory: true,
-                        gameOver: false
+                        gameOver: false,
                     }
                 }
 
                 // Reveal the cell and add a point
-                const newState = Object.assign({}, this.state);
+                const newState = Object.assign({}, this.state)
                 const newGrid = Object.assign(
                     {},
                     newState,
                     {
                         ...newState.grid[id].value = "revealed",
-                        points: newState.points + 1
+                        points: newState.points + 1,
                     },
                     victoryObj
-                );
+                )
 
                 this.setState(newGrid)
             }
@@ -74,17 +74,17 @@ class Minesweeper extends Component {
     }
 
     buildGrid() {
-        let cellArray = []; // <-- Insert celery pun here
-        for(let row = 0; row < gridWidth; row++) {
+        let cellArray = [] // <-- Insert celery pun here
+        for (let row = 0; row < gridWidth; row++) {
             for (let col = 0; col < gridHeight; col++) {
                 let border = "none"
-                if(col === 0) { border = "top" }
-                if(col === gridHeight - 1) { border = "bottom" }
+                if (col === 0) { border = "top" }
+                if (col === gridHeight - 1) { border = "bottom" }
                 cellArray.push({
                     x: row * cellSize,
                     y: col * cellSize,
                     value: "hidden",
-                    border: border
+                    border: border,
                 })
             }
         }
@@ -104,7 +104,7 @@ class Minesweeper extends Component {
                      height={cellSize * gridHeight}
                      viewBox={`0 0 ${cellSize * gridWidth} ${cellSize * gridHeight}`}
                      xmlns="http://www.w3.org/2000/svg">
-                    {this.state.grid.map( (cell, key) => {
+                    {this.state.grid.map((cell, key) => {
                         return (
                             <Cell key={key}
                                   x={cell.x}
@@ -117,15 +117,15 @@ class Minesweeper extends Component {
                     })}
                 </svg>
             </div>
-        );
+        )
     }
 }
 
 function countNeighbours(id, border) {
 
-    const upDir = - 1
+    const upDir = -1
     const downDir = 1
-    const leftDir = - gridHeight
+    const leftDir = -gridHeight
     const rightDir = gridHeight
 
     const up = boolRandArr[id        + upDir                 ]
@@ -138,8 +138,8 @@ function countNeighbours(id, border) {
 
     const right = boolRandArr[id     + rightDir              ]
     const left = boolRandArr[id      + leftDir               ]
-    let neighbourArr;
-    if (border === "top"){
+    let neighbourArr
+    if (border === "top") {
         neighbourArr = [down, downLeft, downRight, right, left]
     }
     else if (border === "bottom") {
@@ -150,13 +150,13 @@ function countNeighbours(id, border) {
     }
 
 
-    let count = 0;
+    let count = 0
     neighbourArr.forEach(neighbour => neighbour <= mineFrequency && count++)
-    return count;
+    return count
 }
 
 export const Cell = props => {
-    const mine = boolRandArr[props.id] <= mineFrequency;
+    const mine = boolRandArr[props.id] <= mineFrequency
     const neighbours = mine ? "X" : countNeighbours(props.id, props.border)
     return (
         <g
@@ -180,11 +180,15 @@ export const Cell = props => {
                   fill={!mine ? "green" : "red"}
             >{props.value !== "hidden" && neighbours}</text>
         </g>)
-};
+}
 Cell.propTypes = {
+    border: PropTypes.string.isRequired,
+    revealer: PropTypes.func.isRequired,
     x: PropTypes.number.isRequired,
     y: PropTypes.number.isRequired,
-    value: PropTypes.string.isRequired
-};
+    value: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
 
-export default Minesweeper;
+}
+
+export default Minesweeper

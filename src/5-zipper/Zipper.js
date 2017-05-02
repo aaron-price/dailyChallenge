@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import {TweenMax, Power4 }from 'gsap';
+import React, { Component } from "react"
+import {TweenMax, Power4 } from "gsap"
 
 function between(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
 class Zipper extends Component {
-    constructor(){
-        super();
+    constructor() {
+        super()
         this.state = {}
         this.animate = this.animate.bind(this)
     }
@@ -16,34 +16,34 @@ class Zipper extends Component {
     }
 
     renderLines() {
-    let lines = [];
-    for (let i = 0; i < 25; i++) {
+        let lines = []
+        for (let i = 0; i < 25; i++) {
 
-        const width = between(0.1, 8);
-        const colour1 = between(0, 255);
-        const colour2 = between(0, 255);
-        const colour3 = between(0, 255);
+            const width = between(0.1, 8)
+            const colour1 = between(0, 255)
+            const colour2 = between(0, 255)
+            const colour3 = between(0, 255)
 
         // Upper line
-        lines.push(<line
+            lines.push(<line
             className="lineUpper"
             key={`${i}-upper`} ref={`${i}-upper`}
             x1={i * 10} x2={i * 10} y1={20} y2={156}
             strokeWidth={width} stroke={`rgba(${colour1},${colour2},${colour3}, 1)`}/>)
 
         // Lower Line
-        lines.push(<line
+            lines.push(<line
             className="lineLower"
             key={`${i}-lower`} ref={`${i}-lower`}
             x1={i * 10} x2={i * 10} y1={320} y2={155}
             strokeWidth={width} stroke={`rgba(${colour1},${colour2},${colour3}, 1)`}/>)
-    }
-    return lines;
+        }
+        return lines
     }
 
     animate() {
-        let ball = this.refs.ball;
-        let tl = TweenMax;
+        let ball = this.refs.ball
+        let tl = TweenMax
 
         tl.to(ball, 2, {x: -280, delay: 0.5, yoyo:true, repeat:1, ease: Power4.easeIn })
 

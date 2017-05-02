@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-//import Gear from './Gear'
-import {TweenMax, Power4, Linear }from 'gsap';
+import React, { Component } from "react"
+// import Gear from './Gear'
+import {TweenMax, Linear } from "gsap"
 
 class Gears extends Component {
     constructor() {
-        super();
-        this.state = {};
+        super()
+        this.state = {}
         this.animate = this.animate.bind(this)
     }
     componentDidMount() {
@@ -17,7 +17,7 @@ class Gears extends Component {
         let gear3 = this.refs.gear3
         let gear4 = this.refs.gear4
 
-        let tl = TweenMax;
+        let tl = TweenMax
 
         tl.to(gear1, 5, {rotation: "360_cw", repeat: -1, transformOrigin: "50% 50%", ease:Linear.easeNone})
         tl.to(gear4, 5, {rotation: "360_ccw", repeat: -1, transformOrigin: "50% 50%", ease:Linear.easeNone})
@@ -29,9 +29,9 @@ class Gears extends Component {
         return (
             <div className="minesweeper">
                 <h1>Gears</h1>
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="520.977px" height="316.32px" viewBox="-75 -106.223 520.977 316.32" style={{enableBackground: 'new -75 -106.223 520.977 316.32'}}>
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="520.977px" height="316.32px" viewBox="-75 -106.223 520.977 316.32" style={{enableBackground: "new -75 -106.223 520.977 316.32"}}>
                     <g id="gear4" ref="gear4">
-                        <polygon style={{fill: '#9E9E9E', stroke: '#000000', strokeMiterlimit: 10}} points="51.987,-29.985 59.254,-70.768 69.932,-70.899
+                        <polygon style={{fill: "#9E9E9E", stroke: "#000000", strokeMiterlimit: 10}} points="51.987,-29.985 59.254,-70.768 69.932,-70.899
         		78.188,-30.307 99.031,-25.411 122.559,-57.225 133.824,-53.25 122.379,-13.45 138.574,0.631 174.105,-16.542 182.245,-7.756
         		153.723,22.134 161.556,42.172 202.682,44.512 204.098,55.158 165.03,68.295 162.712,89.7 198.047,110.994 194.381,121.083
         		153.723,114.454 141.776,132.32 163.225,167.694 155.32,174.916 122.379,150.037 103.548,160.277 106.197,201.623 94.343,203.062
@@ -41,7 +41,7 @@ class Gears extends Component {
         		31.514,-22.939 	" />
                     </g>
                     <g id="gear3" ref="gear3">
-                        <polygon style={{fill: '#616161', stroke: '#000000', strokeMiterlimit: 10}} points="62.014,35.019 64.134,23.123 67.25,23.084
+                        <polygon style={{fill: "#616161", stroke: "#000000", strokeMiterlimit: 10}} points="62.014,35.019 64.134,23.123 67.25,23.084
         		69.658,34.925 75.737,36.353 82.601,27.073 85.887,28.232 82.548,39.842 87.271,43.949 97.636,38.94 100.011,41.503 91.69,50.221
         		93.976,56.067 105.972,56.749 106.385,59.854 94.989,63.687 94.312,69.93 104.62,76.142 103.55,79.085 91.69,77.151 88.206,82.362
         		94.461,92.681 92.157,94.787 82.548,87.53 77.055,90.518 77.827,102.578 74.37,102.998 69.658,92.447 63.414,92.524
@@ -50,7 +50,7 @@ class Gears extends Component {
         		33.57,39.741 44.473,44.69 48.996,40.027 45.628,28.728 48.369,27.237 56.043,37.074 	" />
                     </g>
                     <g id="gear2" ref="gear2">
-                        <polygon style={{fill: '#757575', stroke: '#000000', strokeMiterlimit: 10}} points="-1.024,-48.033 2.185,-66.042 6.9,-66.1
+                        <polygon style={{fill: "#757575", stroke: "#000000", strokeMiterlimit: 10}} points="-1.024,-48.033 2.185,-66.042 6.9,-66.1
         		10.546,-48.175 19.75,-46.013 30.14,-60.062 35.114,-58.306 30.06,-40.731 37.211,-34.513 52.901,-42.097 56.496,-38.217
         		43.9,-25.018 47.359,-16.169 65.52,-15.136 66.145,-10.435 48.894,-4.634 47.87,4.818 63.474,14.221 61.854,18.677 43.9,15.749
         		38.625,23.639 48.096,39.259 44.605,42.448 30.06,31.462 21.744,35.984 22.914,54.241 17.68,54.877 10.546,38.906 1.094,39.021
@@ -59,7 +59,7 @@ class Gears extends Component {
         		-46.717,-36.948 -44.086,-40.884 -27.58,-33.392 -20.732,-40.45 -25.831,-57.557 -21.682,-59.812 -10.064,-44.921 	" />
                     </g>
                     <g id="gear1" ref="gear1">
-                        <polygon style={{fill: '#9E9E9E', stroke: '#000000', strokeMiterlimit: 10}} points="287.602,-62.664 294.868,-103.446 305.546,-103.578
+                        <polygon style={{fill: "#9E9E9E", stroke: "#000000", strokeMiterlimit: 10}} points="287.602,-62.664 294.868,-103.446 305.546,-103.578
         		313.803,-62.986 334.646,-58.089 358.173,-89.904 369.438,-85.928 357.993,-46.128 374.188,-32.048 409.72,-49.221
         		417.859,-40.435 389.337,-10.545 397.17,9.494 438.296,11.833 439.712,22.479 400.645,35.617 398.326,57.021 433.661,78.315
         		429.995,88.405 389.337,81.775 377.391,99.642 398.839,135.016 390.935,142.236 357.993,117.358 339.163,127.598 341.812,168.943
@@ -70,8 +70,8 @@ class Gears extends Component {
                     </g>
                 </svg>
             </div>
-        );
+        )
     }
 }
 
-export default Gears;
+export default Gears

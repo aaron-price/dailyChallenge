@@ -1,18 +1,21 @@
 import { fromJS } from "immutable"
 // Components
-import MineSweeper from "./4-minesweeper/Minesweeper"
-import Zipper from "./5-zipper/Zipper"
+import Api from "./10-api/Api"
+import FilterSettings from "./9-filterSettings/FilterSettings"
+import Gears from "./8-gears/Gears"
 import Hovers from "./6-hovers/Hovers"
 import Menus from "./7-menus/Menus"
-import Gears from "./8-gears/Gears"
-import FilterSettings from "./9-filterSettings/FilterSettings"
+import MineSweeper from "./4-minesweeper/Minesweeper"
+import Zipper from "./5-zipper/Zipper"
 
 // Tags
 let preTags = {}
 function buildTagsObj(title, text) {
     preTags[title] = {filter: "allowed", title, text}
 }
+buildTagsObj("ajax","AJAX")
 buildTagsObj("animation", "Animation")
+buildTagsObj("api","RESTful APIs")
 buildTagsObj("buttons","Buttons")
 buildTagsObj("game","Game")
 buildTagsObj("hover","Hover Effect")
@@ -83,6 +86,12 @@ let contents = fromJS([
         day: 9,
         component: FilterSettings,
         tags: applyTags(["react","redux"]),
+    },
+    {
+        title: "Api",
+        day: 10,
+        component: Api,
+        tags: applyTags(["ajax","api"]),
     },
 ])
 

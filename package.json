@@ -5,11 +5,9 @@
   "dependencies": {
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
-    "crypto-random-string": "^1.0.0",
     "gsap": "^1.19.1",
     "immutable": "^3.8.1",
     "jsdom": "^10.0.0",
-    "mersenne-twister": "^1.1.0",
     "mocha": "^3.3.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -71,6 +69,7 @@
     "test": "node scripts/test.js --env=jsdom",
     "lint": "eslint src/* --fix"
   },
+  "proxy": "http://localhost:3001",
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}"

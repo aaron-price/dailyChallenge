@@ -7,7 +7,6 @@ import PropTypes from "prop-types"
 import ImmutablePropTypes from "react-immutable-proptypes"
 
 function linkFactory(stateContent, contents) {
-    // console.log(stateContent.toJS())
     return contents.map((content, key) => {
         const title = content.get("title")
         const show = stateContent.filter(item => item.get("title") === title).get(0).get("show")
@@ -30,6 +29,7 @@ const Menu = props => {
     return (
         <div className={`header header--${props.headerColor}`}>
             <ul>
+                <li><Link to="/settings">Settings</Link></li>
                 <li><Link to="/">Home</Link></li>
                 {linkFactory(props.stateContent, contents)}
             </ul>

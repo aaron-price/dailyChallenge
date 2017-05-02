@@ -3,6 +3,7 @@ import "./App.scss"
 import { Route } from "react-router-dom"
 import contents from "../contents"
 import Home from "./Home"
+import Settings from "./Settings"
 
 function routeFactory() {
     return contents.map((content, key) => {
@@ -14,6 +15,7 @@ const Body = props => {
     return (
         <div>
             <Route exact path="/" component={Home}/>
+            <Route exact path="/settings" component={Settings}/>
             {routeFactory()}
         </div>
     )

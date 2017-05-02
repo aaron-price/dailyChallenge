@@ -3,46 +3,46 @@ import { tags } from "../contents"
 import { connect } from "react-redux"
 import { updateFilters } from "../redux/actions/actionCreators"
 import PropTypes from "prop-types"
-import { fromJS } from "immutable"
 import ImmutablePropTypes from "react-immutable-proptypes"
+
+function showFilterCategory(filter, tags) {
+    const count = tags.filter(tag => tag.get("filter") === filter).size
+    if (count === 0) { return }
+    return (
+        <div>
+            <h4>{filter} tags</h4>
+            <ul>{tags.valueSeq().map((tag, key) => {
+                return tag.get("filter") === filter && <li key={key}>{tag.get("title")}</li>
+            })}</ul>
+        </div>
+    )
+}
 
 const FilterSettings = props => {
     const tags = props.stateContent.get("tags")
+    console.log()
     return (
-        <div className="webpackOptions">
-            <h1>Options</h1>
-            <ul>{tags.valueSeq().map((tag, key) => {
-                return (
-                    <li key={key}>{tag.get("title")}&nbsp;
-                        <select value={tag.get("filter")}
-                                onChange={(e) => props.dispatchUpdateFilters(tag.get("title"), e.target.value)}
-                        >
-                            <option value="allowed">allowed</option>
-                            <option value="disallowed">disallowed</option>
-                            <option value="required">required</option>
-                    </select></li>
-                )
-            })}</ul>
-
-            <div>
-                <h4>Required</h4>
-                <ul>{tags.valueSeq().map((tag, key) => {
-                    return tag.get("filter") === "required" && <li key={key}>{tag.get("title")}</li>
-                })}</ul>
+        <div className="filter-settings-container">
+            <div className="filter-settings-controls">
+                <h4>Filter by tags</h4>
+                <div>{tags.valueSeq().map((tag, key) => {
+                    return (
+                        <p key={key}>
+                            <select value={tag.get("filter")}
+                                    onChange={(e) => props.dispatchUpdateFilters(tag.get("title"), e.target.value)}
+                            >
+                                <option value="allowed">allowed</option>
+                                <option value="disallowed">disallowed</option>
+                                <option value="required">required</option>
+                        </select>&nbsp;{tag.get("title")}</p>
+                    )
+                })}</div>
             </div>
 
-            <div>
-                <h4>Allowed</h4>
-                <ul>{tags.valueSeq().map((tag, key) => {
-                    return tag.get("filter") === "allowed" && <li key={key}>{tag.get("title")}</li>
-                })}</ul>
-            </div>
-
-            <div>
-                <h4>Disallowed</h4>
-                <ul>{tags.valueSeq().map((tag, key) => {
-                    return tag.get("filter") === "disallowed" && <li key={key}>{tag.get("title")}</li>
-                })}</ul>
+            <div className="revealTagStates">
+                {showFilterCategory("required", tags)}
+                {showFilterCategory("allowed", tags)}
+                {showFilterCategory("disallowed", tags)}
             </div>
         </div>
     )

@@ -8,72 +8,81 @@ import Gears from "./8-gears/Gears"
 import FilterSettings from "./9-filterSettings/FilterSettings"
 
 // Tags
-export const tags = fromJS({
-    animation   : { filter: "allowed", title:"animation", text: "Animation" },
-    buttons     : { filter: "allowed", title:"buttons", text: "Buttons" },
-    game        : { filter: "allowed", title:"game", text: "Game" },
-    hover       : { filter: "allowed", title:"hover", text: "Hover Effect" },
-    react       : { filter: "allowed", title:"react", text: "React" },
-    redux       : { filter: "allowed", title:"redux", text: "Redux" },
-    sass        : { filter: "allowed", title:"sass", text: "SASS / SCSS" },
-    svg         : { filter: "allowed", title:"svg", text: "SVG" },
-    tdd         : { filter: "allowed", title:"tdd", text: "TDD / BDD" },
-    ui          : { filter: "allowed", title:"ui", text: "UI / UX / Design" },
-    vim         : { filter: "allowed", title:"vim", text: "Vim" },
-    vanilla     : { filter: "allowed", title:"vanilla", text: "Only Vanilla Javascript" },
-})
+let preTags = {}
+function buildTagsObj(title, text) {
+    preTags[title] = {filter: "allowed", title, text}
+}
+buildTagsObj("animation", "Animation")
+buildTagsObj("buttons","Buttons")
+buildTagsObj("game","Game")
+buildTagsObj("hover","Hover Effect")
+buildTagsObj("react","React")
+buildTagsObj("redux","Redux")
+buildTagsObj("sass","SASS / SCSS")
+buildTagsObj("svg","SVG")
+buildTagsObj("tdd","TDD / BDD")
+buildTagsObj("ui","UI / UX / Design")
+buildTagsObj("vim","Vim")
+buildTagsObj("vanilla","Only Vanilla Javascript")
+
+export const tags = fromJS(preTags)
+
+
+function applyTags(arr) {
+    return arr.map(str => tags.get(str))
+}
 
 let contents = fromJS([
     {
         title: "Accordion",
         day: 1,
-        tags: [tags.get("tdd"),tags.get("ui"),tags.get("vanilla"),tags.get("vim")],
+        tags: applyTags(["tdd", "ui", "vanilla", "vim"]),
     },
     {
         title: "CreateElements",
         day: 2,
-        tags: [tags.get("tdd"),tags.get("vanilla"),tags.get("vim")],
+        tags: applyTags(["tdd", "vanilla", "vim"]),
     },
     {
         title: "Jezzball",
         day: 3,
-        tags: [tags.get("animation"),tags.get("game"),tags.get("svg"),tags.get("tdd"),tags.get("vanilla"),tags.get("vim")],
+        tags: applyTags(["animation", "game", "svg", "tdd", "vanilla", "vim"]),
     },
     {
         title: "Minesweeper",
         day: 4,
         component: MineSweeper,
-        tags: [tags.get("game"),tags.get("react"),tags.get("svg"),tags.get("tdd")],
+        tags: applyTags(["game","react","svg","tdd"]),
     },
     {
         title: "Zipper",
         day: 5,
         component: Zipper,
-        tags: [tags.get("animation"),tags.get("react"),tags.get("svg")],
+        tags: applyTags(["animation","react","svg"]),
     },
     {
         title: "Hovers",
         day: 6,
         component: Hovers,
-        tags: [tags.get("animation"),tags.get("buttons"),tags.get("hover"),tags.get("react"),tags.get("sass"),tags.get("ui")],
+        tags: applyTags(["animation","buttons","hover","react","sass","ui"]),
     },
     {
         title: "Menu colour settings",
         day: 7,
         component: Menus,
-        tags: [tags.get("react"), tags.get("redux")],
+        tags: applyTags(["react","redux"]),
     },
     {
         title: "Gears",
         day: 8,
         component: Gears,
-        tags: [tags.get("animation"), tags.get("react"), tags.get("svg")],
+        tags: applyTags(["animation","react","svg"]),
     },
     {
         title: "Filter Settings",
         day: 9,
         component: FilterSettings,
-        tags: [tags.get("react"), tags.get("redux")],
+        tags: applyTags(["react","redux"]),
     },
 ])
 
